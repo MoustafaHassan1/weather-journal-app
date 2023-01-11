@@ -22,4 +22,19 @@ app.use(express.static('website'));
 const port = 9000;
 const server = app.listen(port, ()=>{ 
     console.log(`running on localhost: ${port}`);
-    console.log(`http://localhost:${port}/`);});
+    console.log(`http://localhost:${port}/`);
+});
+
+app.get('/data', (req,res)=>{
+    console.log(projectData);
+    res.send(projectData);
+})
+
+app.post('/newData', (req,res)=>{
+    data = req.body;
+    projectData = {
+        temp : data.temp,
+        date : data.date,
+        feel : data.feel
+    }
+})
